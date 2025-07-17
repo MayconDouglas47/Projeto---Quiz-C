@@ -3,116 +3,105 @@
 
 int main() 
 {
-    char opcao; // Armazena a escolha do jogador para jogar novamente (S/N)
+    char opcao; // Armazena a escolha do jogador para jogar novamente ('S' ou 'N')
 
     // Vetor com as perguntas
-    char perguntas[10][100] = 
+    char perguntas[5][100] = 
     {
-        "Qual a capital do Brasil?",
-        "Quanto e 7 x 8?",
-        "Quem escreveu Dom Casmurro?",
-        "Qual e o menor planeta do Sistema Solar?",
-        "Qual linguagem estamos usando agora?",
-        "Qual e o maior oceano do planeta?",
-        "Quem pintou a Mona Lisa?",
-        "Qual o elemento quimico da agua?",
-        "Quantos segundos tem um minuto?",
-        "Em que continente esta o Egito?"
+        "Qual teoria cientifica explica a origem do universo?",
+        "Quem foi o primeiro ser humano a ir ao espaco?",
+        "Qual e o numero matematico que representa a razao aurea?",
+        "O que e o paradoxo do gato de Schrodinger?",
+        "Qual e a funcao principal do DNA nas celulas?"
     };
 
-    // Opções de resposta para cada pergunta
-    char opcoes[10][4][50] = 
+    // Vetor com as opções de resposta para cada pergunta
+    char opcoes[5][4][50] = 
     {
-        {"Sao Paulo", "Brasilia", "Rio de Janeiro", "Curitiba"},
-        {"54", "56", "48", "49"},
-        {"Jose de Alencar", "Machado de Assis", "Clarice Lispector", "Monteiro Lobato"},
-        {"Marte", "Terra", "Plutao", "Mercurio"},
-        {"Python", "Java", "C", "Pascal"},
-        {"Atlantico", "Indico", "Pacifico", "Artico"},
-        {"Van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Michelangelo"},
-        {"H2O", "O2", "CO2", "CH4"},
-        {"60", "100", "120", "30"},
-        {"Asia", "Africa", "Europa", "America"}
+        {"Big Bang", "Evolucao", "Criacionismo", "Relatividade"},
+        {"Neil Armstrong", "Yuri Gagarin", "Buzz Aldrin", "Valentina Tereshkova"},
+        {"3.14", "1.618", "2.71", "0.577"},
+        {"Um gato imortal", "Um gato com 9 vidas", "Um experimento sobre vida e morte simultanea", "Um teste de clonagem felina"},
+        {"Proteger os orgaos", "Armazenar energia", "Transmitir informacoes geneticas", "Criar celulas-tronco"}
     };
 
-    // Índices das respostas corretas (1 a 4)
-    int corretas[10] = {2, 1, 2, 4, 3, 3, 2, 1, 1, 2};
+    // Vetor com os índices das respostas corretas (de 1 a 4)
+    int corretas[5] = {1, 2, 2, 3, 3};
 
-    // Dicas para cada pergunta (usadas se o jogador solicitar)
-    char dicas[10][150] = 
+    // Vetor com as dicas que podem ser usadas pelo jogador
+    char dicas[5][150] = 
     {
-        "E uma cidade planejada localizada no Centro-Oeste.",
-        "E o resultado da tabuada do 7.",
-        "Autor brasileiro associado ao realismo.",
-        "E o planeta mais proximo do Sol.",
-        "E uma linguagem compilada, estruturada e de baixo nivel.",
-        "E o oceano que banha a costa oeste da America do Sul.",
-        "O pintor era tambem inventor e cientista renascentista.",
-        "Dois atomos de hidrogenio e um de oxigenio.",
-        "E uma das unidades basicas do tempo.",
-        "Fica ao norte da Africa e abriga as piramides."
+        "E a teoria mais aceita pela comunidade cientifica e envolve uma grande explosao.",
+        "Foi um cosmonauta sovietico durante a Guerra Fria.",
+        "E um numero irracional muito usado na arte e arquitetura.",
+        "Foi proposto por um fisico como um exemplo de superposicao quantica.",
+        "Contem as instrucoes geneticas para o desenvolvimento e funcionamento do organismo."
     };
 
-    int total = 10; // Número total de perguntas
+    int total = 5; // Quantidade total de perguntas do jogo
 
     // Laço principal do jogo com opção de jogar novamente
     do
     {
-        int acertos = 0; // Zera acertos no início de cada nova partida
+        int acertos = 0; // Reinicia o número de acertos a cada nova jogada
         system("cls");   // Limpa a tela
 
-        printf("=== JOGO DE PERGUNTAS ===\n");
+        printf("=== QUIZ C ===\n");
 
-        // Loop para apresentar todas as perguntas
+        // Laço principal de perguntas
         for (int i = 0; i < total; i++) 
         {
-            int usou_dica = 0; // Controle de uso da dica por pergunta
+            int usou_dica = 0; // Variável de controle para limitar o uso de dica por pergunta
+
+            // Exibe a pergunta atual
             printf("\nPergunta %d: %s\n\n", i + 1, perguntas[i]);
 
-            // Exibe as opções de resposta
+            // Mostra as opções de resposta
             for (int j = 0; j < 4; j++) 
             {
                 printf("%d - %s\n", j + 1, opcoes[i][j]);
             }
 
-            printf("\n5 - Usar dica\n");
+            printf("\n5 - Usar dica\n"); // Opção especial para o jogador ver uma dica
 
             int escolha;
             int respondeu = 0;
 
-            // Loop de validação da resposta
+            // Loop interno para garantir resposta válida do jogador
             while (!respondeu) 
             {
                 printf("\nEscolha: ");
                 scanf("%d", &escolha);
 
-                // Verifica se a resposta está entre 1 e 4
                 if (escolha >= 1 && escolha <= 4) 
                 {
+                    // Verifica se a escolha está correta
                     if (escolha == corretas[i]) 
                     {
                         printf("\nCorreto!\n");
-                        acertos++;
+                        acertos++; // Incrementa acertos se o jogador acertar
                     } 
                     else 
                     {
+                        // Informa a resposta correta se errar
                         printf("\nErrado. A resposta certa era: %s\n", opcoes[i][corretas[i] - 1]);
                     }
                     respondeu = 1; // Sai do loop após resposta válida
                 } 
-                // Exibe dica se ainda não usada
                 else if (escolha == 5 && !usou_dica) 
                 {
+                    // Exibe dica se o jogador ainda não tiver usado
                     printf("\nDica: %s\n", dicas[i]);
-                    usou_dica = 1;
+                    usou_dica = 1; // Caso a dica já tenha sido usada
                 } 
-                // Caso a dica já tenha sido usada
                 else if (escolha == 5 && usou_dica) 
                 {
+                    // Impede uso da dica mais de uma vez por pergunta
                     printf("\nDica ja usada para esta pergunta.\n");
                 } 
                 else 
                 {
+                    // Captura entradas inválidas
                     printf("\nOpcao invalida.\n");
                 }
             }
@@ -122,22 +111,23 @@ int main()
         printf("\n=== RESULTADO FINAL ===\n");
         printf("Voce acertou %d de %d perguntas.\n", acertos, total);
 
+        // Feedback baseado no desempenho
         if (acertos == total)
             printf("Incrivel! Voce gabaritou!\n");
-        else if (acertos >= 7)
-            printf("Muito bem! Voce mandou bem!\n");
         else if (acertos >= 4)
+            printf("Muito bem! Voce mandou bem!\n");
+        else if (acertos >= 2)
             printf("Nada mal, mas pode melhorar!\n");
         else
             printf("Melhor estudar um pouco mais!\n");
 
-        // Pergunta se o jogador quer jogar novamente
+        // Pergunta se deseja jogar novamente
         printf("\nDeseja jogar novamente? (S/N): ");
         scanf(" %c", &opcao);
 
     } while (opcao == 'S' || opcao == 's'); // Repete se jogador quiser
 
-    printf("\nObrigado por jogar!\n");
+    printf("\nObrigado por jogar!\n"); // Mensagem final
 
-    return 0;
+    return 0; // Finaliza o programa
 }
