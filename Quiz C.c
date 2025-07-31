@@ -9,9 +9,9 @@ int main()
     char perguntas[5][100] = 
     {
         "Qual teoria cientifica explica a origem do universo?",
-        "Quem foi o primeiro ser humano a ir ao espaco?",
-        "Qual e o numero matematico que representa a razao aurea?",
-        "O que e o paradoxo do gato de Schrodinger?",
+        "Qual e o maior oceano do planeta?",
+        "Qual o elemento quimico da agua?",
+        "Quantos segundos tem um minuto?",
         "Qual e a funcao principal do DNA nas celulas?"
     };
 
@@ -19,22 +19,22 @@ int main()
     char opcoes[5][4][50] = 
     {
         {"Big Bang", "Evolucao", "Criacionismo", "Relatividade"},
-        {"Neil Armstrong", "Yuri Gagarin", "Buzz Aldrin", "Valentina Tereshkova"},
-        {"3.14", "1.618", "2.71", "0.577"},
-        {"Um gato imortal", "Um gato com 9 vidas", "Um experimento sobre vida e morte simultanea", "Um teste de clonagem felina"},
+        {"Atlantico", "Indico", "Pacifico", "Artico"},
+        {"O2", "H2O", "CO2", "CH4"},
+        {"30", "100", "120", "60"},
         {"Proteger os orgaos", "Armazenar energia", "Transmitir informacoes geneticas", "Criar celulas-tronco"}
     };
 
     // Vetor com os índices das respostas corretas (de 1 a 4)
-    int corretas[5] = {1, 2, 2, 3, 3};
+    int corretas[5] = {1, 3, 2, 4, 3};
 
     // Vetor com as dicas que podem ser usadas pelo jogador
     char dicas[5][150] = 
     {
         "E a teoria mais aceita pela comunidade cientifica e envolve uma grande explosao.",
-        "Foi um cosmonauta sovietico durante a Guerra Fria.",
-        "E um numero irracional muito usado na arte e arquitetura.",
-        "Foi proposto por um fisico como um exemplo de superposicao quantica.",
+        "E o oceano que banha a costa oeste da America do Sul.",
+        "Dois atomos de hidrogenio e um de oxigenio.",
+        "E uma das unidades basicas do tempo.",
         "Contem as instrucoes geneticas para o desenvolvimento e funcionamento do organismo."
     };
 
