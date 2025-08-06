@@ -97,7 +97,7 @@ int main()
                 else if (escolha == 5 && usou_dica) 
                 {
                     // Impede uso da dica mais de uma vez por pergunta
-                    printf("\nDica ja usada para esta pergunta.\n");
+                    printf("\nDica ja foi usada.\n");
                 } 
                 else 
                 {
@@ -131,3 +131,4 @@ int main()
 
     return 0; // Finaliza o programa
 }
+
