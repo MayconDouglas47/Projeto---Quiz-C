@@ -5,7 +5,7 @@ int main()
 {
     char opcao; // Armazena a escolha do jogador para jogar novamente ('S' ou 'N')
 
-    // Vetor com as perguntas
+    // Matriz com as perguntas
     char perguntas[5][100] = 
     {
         "Qual teoria cientifica explica a origem do universo?",
@@ -15,7 +15,7 @@ int main()
         "Qual e a funcao principal do DNA nas celulas?"
     };
 
-    // Vetor com as opções de resposta para cada pergunta
+    // Matriz com as opções de resposta para cada pergunta
     char opcoes[5][4][50] = 
     {
         {"Big Bang", "Evolucao", "Criacionismo", "Relatividade"},
@@ -28,7 +28,7 @@ int main()
     // Vetor com os índices das respostas corretas (de 1 a 4)
     int corretas[5] = {1, 3, 2, 4, 3};
 
-    // Vetor com as dicas que podem ser usadas pelo jogador
+    // Matriz com as dicas que podem ser usadas pelo jogador
     char dicas[5][150] = 
     {
         "E a teoria mais aceita pela comunidade cientifica e envolve uma grande explosao.",
@@ -131,4 +131,3 @@ int main()
 
     return 0; // Finaliza o programa
 }
-
